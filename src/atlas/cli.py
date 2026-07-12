@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Annotated
 
 import typer
+from dotenv import load_dotenv
 
 from atlas.assistant import AssistantService
 from atlas.assistant.factory import create_language_model
@@ -16,6 +17,7 @@ app = typer.Typer(help="Atlas voice assistant", no_args_is_help=True)
 @app.callback()
 def main() -> None:
     """Run Atlas commands."""
+    load_dotenv()
 
 
 @app.command()

@@ -11,9 +11,9 @@ The text assistant reports a missing or rejected OpenAI API key.
 
 ## Diagnosis
 
-Confirm `OPENAI_API_KEY` is present in the Atlas process environment without
-printing its value. Confirm the configured provider is `openai` and the model is
-available to the API project.
+Confirm `.env` contains a non-empty `OPENAI_API_KEY` without printing its value.
+The CLI loads this file automatically. Confirm the configured provider is
+`openai` and the model is available to the API project.
 
 ## Resolution and verification
 

@@ -9,6 +9,9 @@ Atlas loads YAML from `config/atlas.yaml` by default, applies nested `ATLAS_`
 environment overrides, then validates the merged data with strict Pydantic
 models. Double underscores separate nested keys.
 
+The CLI loads local environment variables from the git-ignored `.env` file.
+Use `.env.example` as the template and keep real credentials only in `.env`.
+
 Use `atlas doctor` after editing configuration. Unknown keys and invalid values
 fail validation rather than being ignored.
 

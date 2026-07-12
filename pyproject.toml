@@ -13,6 +13,7 @@ authors = [{ name = "Adam Kerr" }]
 dependencies = [
   "openai>=1.109,<2",
   "pydantic>=2.10,<3",
+  "python-dotenv>=1.1,<2",
   "PyYAML>=6.0,<7",
   "typer>=0.15,<1",
 ]

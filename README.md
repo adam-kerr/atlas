@@ -39,10 +39,11 @@ uv run atlas doctor
 uv run pytest
 ```
 
-Set an OpenAI API key and send a text request:
+Copy the local environment template, add an OpenAI API key, and send a text request:
 
 ```bash
-export OPENAI_API_KEY="your-api-key"
+cp .env.example .env
+# Edit .env and set OPENAI_API_KEY. The file is ignored by Git.
 uv run atlas ask "What can you help me with?"
 ```
 
