@@ -13,3 +13,6 @@ Repository rules live in `.claude/rules/`:
 
 Read `knowledge/README.md` before changing domain behavior. Update the relevant
 knowledge document in the same change as the code it describes.
+
+Keep Atlas documentation self-contained. Do not reference unrelated repositories
+or describe Atlas files by their external inspiration or provenance.
