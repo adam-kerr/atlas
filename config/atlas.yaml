@@ -1,0 +1,20 @@
+voice:
+  wake_word: atlas
+  stt_provider: whisper
+  tts_provider: piper
+
+llm:
+  provider: openai
+  model: null
+
+assistant:
+  personality: concise
+
+integrations:
+  weather: false
+  calendar: false
+  home_assistant: false
+
+logging:
+  level: INFO
+  format: json

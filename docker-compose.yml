@@ -1,0 +1,8 @@
+services:
+  atlas:
+    build: .
+    volumes:
+      - ./config:/app/config:ro
+    environment:
+      ATLAS_LOGGING__FORMAT: json
+    restart: "no"
