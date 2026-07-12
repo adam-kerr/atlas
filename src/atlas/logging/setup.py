@@ -40,6 +40,8 @@ def configure_logging(settings: LoggingSettings) -> None:
     root.handlers.clear()
     root.addHandler(handler)
     root.setLevel(settings.level)
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("openai").setLevel(logging.WARNING)
 
 
 def get_logger(name: str) -> logging.Logger:

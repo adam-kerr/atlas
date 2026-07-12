@@ -1,6 +1,7 @@
 import pytest
 
 from atlas.assistant import AssistantService
+from atlas.assistant.types import ModelResponse
 
 
 class FakeLanguageModel:
@@ -9,10 +10,12 @@ class FakeLanguageModel:
         self.prompt: str | None = None
         self.instructions: str | None = None
 
-    def generate(self, prompt: str, *, instructions: str) -> str:
+    def generate(
+        self, prompt: str, *, instructions: str, previous_response_id: str | None = None
+    ) -> ModelResponse:
         self.prompt = prompt
         self.instructions = instructions
-        return self.response
+        return ModelResponse(self.response, previous_response_id)
 
 
 def test_responds_through_injected_model() -> None:
@@ -21,7 +24,7 @@ def test_responds_through_injected_model() -> None:
 
     response = assistant.respond("  Hello  ")
 
-    assert response == "Hello from Atlas"
+    assert response.text == "Hello from Atlas"
     assert model.prompt == "Hello"
     assert model.instructions == "You are Atlas, a helpful voice assistant. Be concise."
 

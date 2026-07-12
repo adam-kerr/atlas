@@ -20,6 +20,11 @@ class VoiceSettings(StrictModel):
 class LLMSettings(StrictModel):
     provider: Literal["openai"] = "openai"
     model: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)] = "gpt-5.6-luna"
+    reasoning_effort: Literal["none", "low", "medium", "high"] = "none"
+    verbosity: Literal["low", "medium", "high"] = "low"
+    max_output_tokens: int = Field(default=300, ge=1, le=16_384)
+    timeout_seconds: float = Field(default=30, gt=0, le=300)
+    max_retries: int = Field(default=1, ge=0, le=5)
 
 
 class AssistantSettings(StrictModel):
