@@ -6,6 +6,11 @@ voice:
 llm:
   provider: openai
   model: gpt-5.6-luna
+  reasoning_effort: none
+  verbosity: low
+  max_output_tokens: 300
+  timeout_seconds: 30
+  max_retries: 1
 
 assistant:
   personality: concise

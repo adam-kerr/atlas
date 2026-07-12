@@ -19,3 +19,6 @@ The CLI loads this file automatically. Confirm the configured provider is
 
 Set a valid project API key through the environment or deployment secret store,
 then run a small `atlas ask` request. Never write the key into YAML or commit it.
+
+Atlas reports expected authentication, quota, rate-limit, connection, and
+timeout failures without a Python traceback.

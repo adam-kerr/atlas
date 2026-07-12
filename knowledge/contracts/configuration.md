@@ -14,6 +14,11 @@ Environment overrides use `ATLAS_<SECTION>__<FIELD>`.
 | `voice` | `tts_provider` | `piper` |
 | `llm` | `provider` | `openai` |
 | `llm` | `model` | `gpt-5.6-luna` |
+| `llm` | `reasoning_effort` | `none` |
+| `llm` | `verbosity` | `low` |
+| `llm` | `max_output_tokens` | `300` |
+| `llm` | `timeout_seconds` | `30` |
+| `llm` | `max_retries` | `1` |
 | `assistant` | `personality` | `concise` |
 | `integrations` | `weather` | `false` |
 | `integrations` | `calendar` | `false` |

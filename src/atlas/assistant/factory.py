@@ -9,5 +9,5 @@ def create_language_model(settings: LLMSettings) -> LanguageModel:
     if settings.provider == "openai":
         from atlas.assistant.providers.openai import OpenAILanguageModel
 
-        return OpenAILanguageModel(model=settings.model)
+        return OpenAILanguageModel(settings)
     raise ValueError(f"Unsupported LLM provider: {settings.provider}")

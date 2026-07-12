@@ -33,7 +33,15 @@ def test_missing_file_uses_defaults(tmp_path: Path) -> None:
 
 @pytest.mark.parametrize(
     "llm_yaml",
-    ["provider: unsupported", 'model: ""', 'model: "   "'],
+    [
+        "provider: unsupported",
+        'model: ""',
+        'model: "   "',
+        "max_output_tokens: 0",
+        "timeout_seconds: 0",
+        "max_retries: 6",
+        "reasoning_effort: extreme",
+    ],
 )
 def test_rejects_invalid_llm_configuration(tmp_path: Path, llm_yaml: str) -> None:
     config = tmp_path / "atlas.yaml"

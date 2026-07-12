@@ -47,6 +47,14 @@ cp .env.example .env
 uv run atlas ask "What can you help me with?"
 ```
 
+Start a multi-turn conversation:
+
+```bash
+uv run atlas chat
+```
+
+Chat commands are `/new`, `/status`, `/help`, and `/exit`.
+
 The language model defaults to `gpt-5.6-luna`. Override it in YAML or with
 `ATLAS_LLM__MODEL`.
 
