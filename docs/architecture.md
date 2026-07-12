@@ -5,7 +5,7 @@ Atlas has three primary layers with one-way conceptual dependencies.
 ```text
 Voice layer          Assistant layer             Integration layer
 wake word            conversation state          weather
-VAD          <---->  routing and reasoning <----> calendar
+VAD          ------> routing and reasoning ------> calendar
 STT / TTS            tool selection              Home Assistant
 playback              response generation         notes and reminders
 ```
