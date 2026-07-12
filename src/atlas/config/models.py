@@ -19,7 +19,7 @@ class VoiceSettings(StrictModel):
 
 class LLMSettings(StrictModel):
     provider: str = "openai"
-    model: str | None = None
+    model: str = "gpt-5.6-luna"
 
 
 class AssistantSettings(StrictModel):
