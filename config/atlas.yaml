@@ -5,7 +5,7 @@ voice:
 
 llm:
   provider: openai
-  model: null
+  model: gpt-5.6-luna
 
 assistant:
   personality: concise

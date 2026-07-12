@@ -4,9 +4,12 @@ from pathlib import Path
 from typing import Annotated
 
 import typer
+from dotenv import load_dotenv
 
+from atlas.assistant import AssistantService
+from atlas.assistant.factory import create_language_model
 from atlas.config import AtlasSettings, load_settings
-from atlas.logging import configure_logging, get_logger
+from atlas.logging import configure_logging, get_logger, timed_operation
 
 app = typer.Typer(help="Atlas voice assistant", no_args_is_help=True)
 
@@ -14,6 +17,7 @@ app = typer.Typer(help="Atlas voice assistant", no_args_is_help=True)
 @app.callback()
 def main() -> None:
     """Run Atlas commands."""
+    load_dotenv()
 
 
 @app.command()
@@ -38,6 +42,24 @@ def doctor(
         },
     )
     typer.echo("Atlas configuration is valid.")
+
+
+@app.command()
+def ask(
+    prompt: Annotated[str, typer.Argument(help="Question or request for Atlas.")],
+    config: Annotated[
+        Path,
+        typer.Option("--config", "-c", help="Path to the Atlas YAML configuration."),
+    ] = Path("config/atlas.yaml"),
+) -> None:
+    """Send one text request to the configured language model."""
+    settings = load_settings(config)
+    configure_logging(settings.logging)
+    model = create_language_model(settings.llm)
+    assistant = AssistantService(model, personality=settings.assistant.personality)
+    with timed_operation(get_logger(__name__), "assistant_request"):
+        response = assistant.respond(prompt)
+    typer.echo(response)
 
 
 if __name__ == "__main__":

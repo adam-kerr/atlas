@@ -1,8 +1,8 @@
 """Provider-neutral configuration models."""
 
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 
 class StrictModel(BaseModel):
@@ -18,8 +18,8 @@ class VoiceSettings(StrictModel):
 
 
 class LLMSettings(StrictModel):
-    provider: str = "openai"
-    model: str | None = None
+    provider: Literal["openai"] = "openai"
+    model: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)] = "gpt-5.6-luna"
 
 
 class AssistantSettings(StrictModel):

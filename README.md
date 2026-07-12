@@ -26,6 +26,8 @@ Voice layer -> Assistant layer -> Integration layer
 - **Integrations** expose capabilities through provider-neutral interfaces.
 
 See [docs/architecture.md](docs/architecture.md) for the design boundaries.
+Maintainer and agent-facing product knowledge lives in
+[knowledge/README.md](knowledge/README.md).
 
 ## Quick start
 
@@ -36,6 +38,17 @@ uv sync --dev
 uv run atlas doctor
 uv run pytest
 ```
+
+Copy the local environment template, add an OpenAI API key, and send a text request:
+
+```bash
+cp .env.example .env
+# Edit .env and set OPENAI_API_KEY. The file is ignored by Git.
+uv run atlas ask "What can you help me with?"
+```
+
+The language model defaults to `gpt-5.6-luna`. Override it in YAML or with
+`ATLAS_LLM__MODEL`.
 
 Atlas reads `config/atlas.yaml` by default. Override individual settings with
 environment variables using `ATLAS_` and `__` for nesting:
